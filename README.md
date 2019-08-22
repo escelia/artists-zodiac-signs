@@ -1,4 +1,4 @@
-# artists-zodiac-signs
+# zodiac-utils
 
 Find the zodiac sign of any person with a live wikipedia page.
 
