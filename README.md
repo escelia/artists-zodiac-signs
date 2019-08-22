@@ -1,6 +1,6 @@
 # artists-zodiac-signs
 
-Tool that calculates the zodiac sign of your favorite artist (or any person with a live wikipedia page).
+Find the zodiac sign of any person with a live wikipedia page.
 
 ## Usage
 ```
