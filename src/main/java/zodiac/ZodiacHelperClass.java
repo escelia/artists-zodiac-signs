@@ -1,8 +1,13 @@
 package zodiac;
 
-public class FindZodiac {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-  public static ZodiacSign findZodiacSign(Date dateOfBirth) {
+public class ZodiacHelperClass {
+
+  static ZodiacSign findZodiacSign(Date dateOfBirth) {
 
     Date piscesAriesCusp = Date.parseDate("03|21");
     Date ariesTaurusCusp = Date.parseDate("04|20");
@@ -53,5 +58,43 @@ public class FindZodiac {
     }
     else
       return ZodiacSign.PISCES;
+  }
+
+  static String wikipediaGetRequest(String artist) throws Exception {
+    artist = artist.replaceAll(" ", "_");
+    URL urlForGetRequest = new URL("https://en.wikipedia.org/w/api.php?action=parse&page=" + artist + "&format=json&section=0&prop=wikitext");
+    String readLine;
+    HttpURLConnection connection = (HttpURLConnection) urlForGetRequest.openConnection();
+    connection.setRequestMethod("GET");
+    int responseCode = connection.getResponseCode();
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+      BufferedReader in = new BufferedReader(
+          new InputStreamReader(connection.getInputStream()));
+      StringBuffer response = new StringBuffer();
+      while ((readLine = in.readLine()) != null) {
+        response.append(readLine);
+      } in.close();
+
+//      System.out.println(response.toString());
+      return response.toString();
+
+    } else {
+      throw new Exception("Get request failed.");
+    }
+  }
+
+  static String parseBirthday(String response) {
+    for(int i = 0; i < response.length(); i++) {
+      if(i + 7 < response.length()) {
+        if (response.substring(i, i + 7).toLowerCase().equals("{{birth")) {
+          int j = i + 7;
+          while (!response.substring(j, j + 2).equals("}}")) {
+            j++;
+          }
+          return response.substring(i, j + 2);
+        }
+      }
+    }
+    return "";
   }
 }

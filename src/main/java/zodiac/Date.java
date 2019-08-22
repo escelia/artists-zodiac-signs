@@ -7,32 +7,32 @@ public class Date {
   int month;
   int day;
 
-  public Date(int month, int day) {
+  Date(int month, int day) {
     this.month = month;
     this.day = day;
   }
 
-  public boolean isBefore(Date otherDate) {
+  boolean isBefore(Date otherDate) {
     return this.month < otherDate.month || (this.month == otherDate.month && this.day < otherDate.day);
   }
 
-  public boolean isBeforeOrEqual(Date otherDate) {
+  boolean isBeforeOrEqual(Date otherDate) {
     return this.month < otherDate.month || (this.month == otherDate.month && this.day <= otherDate.day);
   }
 
-  public boolean isAfter(Date otherDate) {
+  boolean isAfter(Date otherDate) {
     return this.month > otherDate.month || (this.month == otherDate.month && this.day > otherDate.day);
   }
 
-  public boolean isAfterOrEqual(Date otherDate) {
+  boolean isAfterOrEqual(Date otherDate) {
     return this.month > otherDate.month || (this.month == otherDate.month && this.day >= otherDate.day);
   }
 
-  public static Date parseDate(String date) {
+  static Date parseDate(String date) {
     return new Date(Integer.parseInt(date.substring(0, 2)), Integer.parseInt(date.substring(3, 5)));
   }
 
-  public static Date parseMonthDay(String str) {
+  static Date parseMonthDay(String str) {
 
     for(int i = 0; i < str.length(); i++) {
       if(StringUtils.isNumeric(str.substring(i, i + 4))) {
