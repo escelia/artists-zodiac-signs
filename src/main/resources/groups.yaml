@@ -1,0 +1,16 @@
+earth:
+  - CAPRICORN
+  - VIRGO
+  - TAURUS
+water:
+  - PISCES
+  - SCORPIO
+  - CANCER
+air:
+  - AQUARIUS
+  - LIBRA
+  - GEMINI
+fire:
+  - SAGITTARIUS
+  - LEO
+  - ARIES
