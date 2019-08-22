@@ -11,7 +11,7 @@ public class Application {
 
 
   public static void main(String[] args) throws Exception {
-    String artist = "David Bowie";
+    String artist = "Elon Musk";
     String response = wikipediaGetRequest(artist);
 
 //    System.out.println("JSON String Result " + response);
@@ -41,7 +41,7 @@ public class Application {
         response.append(readLine);
       } in.close();
 
-      System.out.println(response.toString());
+//      System.out.println(response.toString());
       return response.toString();
 
     } else {

@@ -60,6 +60,21 @@ public class Date {
     return null;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if(o == this) {
+      return true;
+    }
+
+    if(!(o instanceof Date)) {
+      return false;
+    }
+
+    Date otherDate = (Date) o;
+
+    return this.month == otherDate.month && this.day == otherDate.day;
+  }
+
   public String toString() {
     return month + "|" + day;
   }

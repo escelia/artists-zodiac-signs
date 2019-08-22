@@ -12,6 +12,5 @@ enum ZodiacSign {
   SAGITTARIUS,
   CAPRICORN,
   AQUARIUS,
-  PISCES,
-  CUSP;
+  PISCES;
 }

@@ -3,9 +3,7 @@ package zodiac;
 public class FindZodiac {
 
   public static ZodiacSign findZodiacSign(Date dateOfBirth) {
-    /*
-     ** FIX CAPRICORN - AQUA GAP **
-     */
+
     Date piscesAriesCusp = Date.parseDate("03|21");
     Date ariesTaurusCusp = Date.parseDate("04|20");
     Date taurusGeminiCusp = Date.parseDate("05|21");
@@ -19,47 +17,41 @@ public class FindZodiac {
     Date capricornAquariusCusp = Date.parseDate("01|20");
     Date aquariusPiscesCusp = Date.parseDate("02|19");
 
-    if(dateOfBirth.isBefore(ariesTaurusCusp) && dateOfBirth.isAfter(piscesAriesCusp)) {
+    if(dateOfBirth.isBefore(ariesTaurusCusp) && dateOfBirth.isAfterOrEqual(piscesAriesCusp)) {
       return ZodiacSign.ARIES;
     }
-    else if(dateOfBirth.isBefore(taurusGeminiCusp) && dateOfBirth.isAfter(ariesTaurusCusp)) {
+    else if(dateOfBirth.isBefore(taurusGeminiCusp) && dateOfBirth.isAfterOrEqual(ariesTaurusCusp)) {
       return ZodiacSign.TAURUS;
     }
-    else if(dateOfBirth.isBefore(geminiCancerCusp) && dateOfBirth.isAfter(taurusGeminiCusp)) {
+    else if(dateOfBirth.isBefore(geminiCancerCusp) && dateOfBirth.isAfterOrEqual(taurusGeminiCusp)) {
       return ZodiacSign.GEMINI;
     }
-    else if(dateOfBirth.isBefore(cancerLeoCusp) && dateOfBirth.isAfter(geminiCancerCusp)) {
+    else if(dateOfBirth.isBefore(cancerLeoCusp) && dateOfBirth.isAfterOrEqual(geminiCancerCusp)) {
       return ZodiacSign.CANCER;
     }
-    else if(dateOfBirth.isBefore(leoVirgoCusp) && dateOfBirth.isAfter(cancerLeoCusp)) {
+    else if(dateOfBirth.isBefore(leoVirgoCusp) && dateOfBirth.isAfterOrEqual(cancerLeoCusp)) {
       return ZodiacSign.LEO;
     }
-    else if(dateOfBirth.isBefore(virgoLibraCusp) && dateOfBirth.isAfter(leoVirgoCusp)) {
+    else if(dateOfBirth.isBefore(virgoLibraCusp) && dateOfBirth.isAfterOrEqual(leoVirgoCusp)) {
       return ZodiacSign.VIRGO;
     }
-    else if(dateOfBirth.isBefore(libraScorpioCusp) && dateOfBirth.isAfter(virgoLibraCusp)) {
+    else if(dateOfBirth.isBefore(libraScorpioCusp) && dateOfBirth.isAfterOrEqual(virgoLibraCusp)) {
       return ZodiacSign.LIBRA;
     }
-    else if(dateOfBirth.isBefore(scorpioSagittariusCusp) && dateOfBirth.isAfter(libraScorpioCusp)) {
+    else if(dateOfBirth.isBefore(scorpioSagittariusCusp) && dateOfBirth.isAfterOrEqual(libraScorpioCusp)) {
       return ZodiacSign.SCORPIO;
     }
-    else if(dateOfBirth.isBefore(sagittariusCapricornCusp) && dateOfBirth.isAfter(scorpioSagittariusCusp)) {
+    else if(dateOfBirth.isBefore(sagittariusCapricornCusp) && dateOfBirth.isAfterOrEqual(scorpioSagittariusCusp)) {
       return ZodiacSign.SAGITTARIUS;
     }
     else if((dateOfBirth.isBeforeOrEqual(Date.parseDate("12|31")) && dateOfBirth.isAfter(sagittariusCapricornCusp)) ||
               dateOfBirth.isBefore(capricornAquariusCusp) && dateOfBirth.isAfterOrEqual(Date.parseDate("01|01"))) {
       return ZodiacSign.CAPRICORN;
     }
-    else if((dateOfBirth.isBeforeOrEqual(Date.parseDate("12|31")) && dateOfBirth.isAfter(capricornAquariusCusp)) ||
-              dateOfBirth.isBefore(aquariusPiscesCusp) && dateOfBirth.isAfterOrEqual(Date.parseDate("01|01"))){
+    else if(dateOfBirth.isBefore(aquariusPiscesCusp) && dateOfBirth.isAfterOrEqual(capricornAquariusCusp)) {
       return ZodiacSign.AQUARIUS;
     }
-    else if(dateOfBirth.isBefore(piscesAriesCusp) && dateOfBirth.isAfter(aquariusPiscesCusp)){
+    else
       return ZodiacSign.PISCES;
-    }
-    else {
-      System.out.println(piscesAriesCusp.toString());
-      return ZodiacSign.CUSP;
-    }
   }
 }
